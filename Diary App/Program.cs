@@ -1,7 +1,16 @@
+using Diary_App.Data;
+
+using Microsoft.EntityFrameworkCore;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContextPool<CLSDbContext>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("con")));
+
+
 
 var app = builder.Build();
 
